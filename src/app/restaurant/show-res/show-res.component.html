@@ -1,0 +1,52 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addClick()" data-backdrop="static" data-keyboard="false">
+    Add Restaurant
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{Title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-rest [rest]="rest"  *ngIf="ActivateAddEditRestComp"></app-add-edit-rest>
+          <app-add-review [rest]="rest"  *ngIf="ActivateReviewComp"></app-add-review>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Restraunt Name:</th>
+        <th>Restraunt Address:</th>
+        <th>Restraunt City:</th>
+        <th>Restraunt State:</th>
+        <th>Restraunt Zip:</th>
+        <th>Restraunt Description:</th>
+        <th>Restraunt Hours:</th>
+        <th>Restraunt Review Average:</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of RestaurantList" [ngClass]="{'badRep' : dataItem.Average<3}">
+          <td>{{dataItem.RestaurantName}}</td>
+          <td>{{dataItem.StreetAddress}}</td>
+          <td>{{dataItem.City}}</td>
+          <td>{{dataItem.State}}</td>
+          <td>{{dataItem.Zip}}</td>
+          <td>{{dataItem.Description}}</td>
+          <td>{{dataItem.HoursOfOperation}}</td>
+          <td >{{dataItem.Average}}</td> 
+          <td>
+            <button type="button" class="btn btn-light m-1" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">Edit</button>
+            <button type="button" class="btn btn-light m-1" (click)="deleteClick(dataItem)">Delete</button>
+            <button type="button" class="btn btn-light m-1" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="reviewClick(dataItem)" data-backdrop="static" data-keyboard="false">Add A Review</button>
+          </td>
+        </tr>
+    </tbody>
+  </table>

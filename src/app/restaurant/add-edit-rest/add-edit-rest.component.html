@@ -1,0 +1,45 @@
+<div class="form-froup row">
+
+    <label class="col-sm-2 col-form-label">Restaurant Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="RestaurantName" placeholder="Enter Restaurant Name" required>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Street Address</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="StreetAddress" placeholder="Enter Restaurant Address">
+    </div>
+
+    <label class="col-sm-2 col-form-label">City</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="City" placeholder="Enter City">
+    </div>
+
+    <label class="col-sm-2 col-form-label">State</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="State" placeholder="Enter State">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Zip</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Zip" placeholder="Enter Zip">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Description" placeholder="Tell us about the Restaurant">
+    </div>
+
+    <label class="col-sm-2 col-form-label">HoursOfOperation</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="HoursOfOperation" placeholder="Hours Of Operation">
+    </div>
+
+    <label class="col-sm-2 col-form-label" *ngIf="rest.RestaurantId==0">Restaurant Rating</label>
+    <div class="col-sm-10" *ngIf="rest.RestaurantId==0">
+        <input type="text" class="form-control" [(ngModel)]="Rating" placeholder="Rating (1-5)" required>
+    </div>
+
+    <button (click)="addRestaurant()" *ngIf="rest.RestaurantId==0" class="btn btn-priamry">Add</button>
+    <button (click)="updateRestaurant()" *ngIf="rest.RestaurantId!=0" class="btn btn-priamry">Update</button>
+</div>
